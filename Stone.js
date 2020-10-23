@@ -1,17 +1,25 @@
 class Stone {
-    constructor(x,y,width,height){
-
-      this.body = Bodies.rectangle(x,y,10,10);
-      this.width = width;
-      this.height = height;
-      World.add(world,this.body);
-
-      this.image = loadImage("Project28/stone.png");
+    constructor(x, y) {
+        var options = {
+            isStatic: false,
+            restitution: 0,
+            friction: 1.0,
+            density: 1.2
+        }
+        this.body = Bodies.circle(x, y, 30, options);
+        this.radius = 30;
+        this.image = loadImage("Images/stone.png");
+        World.add(world, this.body);
     }
-  
     display() {
-      // this.body.position.x = mouseX;
-      // this.body.position.y = mouseY;
+        var pos = this.body.position;
+        //push();
+        //translate(pos.x, pos.y);
+        imageMode(CENTER);
+        image(this.image, pos.x, pos.y, 45, 45);
+        //fill("pink");
+        //ellipseMode(CENTER);
+        //ellipse(pos.x,pos.y,this.radius,this.radius);
+        //pop();
     }
-  }
-  
+}
